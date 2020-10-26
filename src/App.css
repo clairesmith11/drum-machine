@@ -1,38 +1,159 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background: url(./Assets/drumkit.jpg), rgba(45,35,46,0.8);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+.drum-machine,
+.display {
   text-align: center;
+  border-radius: 10px;
+  background-color:  rgba(255, 255, 255, .35);
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.drum-machine {
+  border: 5px solid  #2d232e;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.display {
+  height: 4.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #2d232e;
+  grid-column: 1 / 4;
+  align-self: center;
+  justify-self: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.display-text {
+  color: #ab3428;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.pad-bank { 
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-template-rows: repeat(4, max-content);
+  grid-gap: 1rem;
+  margin: 6rem;
+}
+
+.drum-pad {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 10px;
+  background-color: #ab3428;
+  border: 2px solid #2d232e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  -moz-user-select: none;
+}
+
+.drum-pad:active {
+  background-color: #d45549;
+  transform: scale(1.02);
+}
+
+.volume-slider {
+  height: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-right: 5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.volume-slider input {
+  height: 15rem;
+  background: transparent;
+  -webkit-appearance: none;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 10px 0px;
+  transform: rotate(270deg);
 }
 
-@keyframes App-logo-spin {
-  from {
+.volume-slider input:focus {
+  outline: none;
+}
+
+.volume-slider label, p {
+  text-transform: uppercase;
+  color: #2d232e;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.volume-slider input::-moz-range-track {
+  cursor: pointer;
+  width: 15rem;
+  height: 1rem;
+  background-color: #ab3428;
+}
+
+.volume-slider input::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 3rem;
+  width: 1.5rem;
+  border-radius: 5px;
+  background: #2d232e;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .drum-machine {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .volume-slider {
+    flex-direction: row;
+    height: 5rem;
+    width: 20rem;
+    margin-bottom: 2.5rem;
+  }
+  .volume-slider input {
     transform: rotate(0deg);
+    margin: 0 10px;
+    height: 5rem;
+    width: 15rem;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 50%;
   }
+  body {
+    background-repeat: repeat;
+  }
+  
 }
